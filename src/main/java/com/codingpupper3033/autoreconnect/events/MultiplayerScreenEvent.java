@@ -66,6 +66,11 @@ public class MultiplayerScreenEvent {
         Connection connection = Minecraft.getInstance().player.connection.getConnection();
         TranslatableComponent disconnectReason = (TranslatableComponent) connection.getDisconnectedReason();
 
+        // Didn't actually disconnect
+        if(disconnectReason == null) {
+            return;
+        }
+
         // No Args, disconnected for a reason
         if (disconnectReason.getArgs().length == 0) {
             return;
